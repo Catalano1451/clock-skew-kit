@@ -1,6 +1,6 @@
 [project]
 name = "clock-skew-kit"
-version = "0.1.0"
+version = "0.1.1"
 description = "Determines remote server clock skew from paired timestamp samples using a median-based estimator."
 requires-python = ">=3.10"
 dependencies = []
