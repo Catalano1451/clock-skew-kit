@@ -21,3 +21,10 @@ When you receive a timestamp from a remote server, the value it reports may disa
 ## The awkward edge
 
 A single sample produces a skew estimate with a median absolute deviation of zero, which looks like high confidence but is not. Callers should treat `sample_count` as a gate: a handful of samples is not enough to trust the estimate. There is no built-in minimum-sample enforcement because the right threshold depends on your jitter environment.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
